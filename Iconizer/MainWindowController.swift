@@ -20,6 +20,8 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     @IBOutlet weak var mac: NSButton!               // Generate Mac mac icons - Checkbox: Int 1/0
     @IBOutlet weak var combined: NSButton!          // Generate selected platforms into one catalog: Int 1/0
     @IBOutlet weak var imageView: NSImageView!
+    @IBOutlet weak var progressIndicator: NSProgressIndicator!
+    
     
     let imageGenerator = ImageGenerator()            // ImageGenerator to resize the given image to the appropriate sizes
     let prefManager    = PreferenceManager()         // Handle the user preferences in an extra crontroller
@@ -85,9 +87,6 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         
         saveModal.beginSheetModalForWindow(window!) { (result: Int) -> Void in
             if result == NSFileHandlingPanelOKButton {
-                // Generate required images
-                self.imageGenerator.generateImagesFrom(self.imageView.image, forPlatforms: self.enabledPlatforms)
-                
                 // Save generated images to the user choosen directory
                 if self.combined.state == NSOnState {
                     // Either as combined asset...
@@ -123,11 +122,22 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
             return
         }
         
-        if imageView.image != nil {
+        // Unwrap the NSImageWell's image
+        if let img = imageView.image {
+            // Display the progress indicator and start the animation
+            progressIndicator.hidden = false
+            progressIndicator.startAnimation(self)
+            
+            // Generate the required images
+            imageGenerator.generateImagesFrom(img, forPlatforms: enabledPlatforms)
             openExportPanel()
+            
+            // Processing finished! Hide the progress indicator and stop the animation
+            progressIndicator.hidden = true
+            progressIndicator.stopAnimation(self)
         } else {
-            // Abort generation without image
-            displayAlertWithMessage("No image!", andInformativeText: "You have to provide an image to convert. Just drag and drop it onto the white bordered, grey area.")
+            // Abort when no image is given
+            displayAlertWithMessage("No image!", andInformativeText: "You have to provide an image to convert. drag & drop one onto the white bordered, grey area.")
         }
     }
 }
