@@ -6,5 +6,5 @@ Creates Xcode iconsets for iPad, iPhone, Apple Watch and OS X.
 Visit the [homepage](http://behoernchen.github.io/iconizer/) for more information.
 
 # How do I install it?
-1. Download the [binary](http://cl.ly/axbp/download/Iconizer.zip) and drop into your Application's folder.
+1. Download the [binary](http://cl.ly/b01u/download/Iconizer.dmg) and drop into your Application's folder.
 2. Download source code and compile yourself.
