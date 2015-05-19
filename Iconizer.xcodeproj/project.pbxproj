@@ -433,6 +433,7 @@
 				20A9A5ED1AFEB83C00D07AA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		20A9A5EE1AFEB83C00D07AA1 /* Build configuration list for PBXNativeTarget "IconizerTests" */ = {
 			isa = XCConfigurationList;
@@ -441,6 +442,7 @@
 				20A9A5F01AFEB83C00D07AA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

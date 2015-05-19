@@ -30,6 +30,9 @@ class ImageGenerator {
         
         // required icon sizes for ipad
         icnSizes["iPad"] = ["settings-@1x": 29, "settings-@2x": 58, "spotlight-@1x": 40, "spotlight-@2x": 80, "oldSpotlight-@1x": 50, "oldSpotlight-@2x": 100, "appicon-@1x": 76, "appicon-@2x": 152, "oldAppicon-@1x": 72, "oldAppicon-@2x": 144]
+        
+        // required icon sizes for car play
+        icnSizes["car"] = ["carplay-@1x": 120]
     }
     
     

@@ -17,7 +17,8 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     @IBOutlet weak var watch: NSButton!             // Generate Apple Watch icons - Checkbox: Int 1/0
     @IBOutlet weak var iphone: NSButton!            // Generate iPhone icons - Checkbox: Int 1/0
     @IBOutlet weak var ipad: NSButton!              // Generate iPad icons - Checkbox: Int 1/0
-    @IBOutlet weak var mac: NSButton!               // Generate Mac mac icons - Checkbox: Int 1/0
+    @IBOutlet weak var mac: NSButton!               // Generate OS X icons - Checkbox: Int 1/0
+    @IBOutlet weak var car: NSButton!               // Generate CarPlay icons - Checkbox: Int 1/0
     @IBOutlet weak var combined: NSButton!          // Generate selected platforms into one catalog: Int 1/0
     @IBOutlet weak var imageView: NSImageView!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
@@ -47,6 +48,10 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
                 tmp.append(mac.title)
             }
             
+            if car.state == NSOnState {
+                tmp.append("car")
+            }
+            
             return tmp
         }
     }
@@ -57,11 +62,15 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     override func windowDidLoad() {
         super.windowDidLoad()
         
+        // Hide the window title
+        window!.titleVisibility = .Hidden
+        
         // Set Checkbox states
         watch.state    = prefManager.generateForAppleWatch
         iphone.state   = prefManager.generateForIPhone
         ipad.state     = prefManager.generateForIPad
         mac.state      = prefManager.generateForMac
+        car.state      = prefManager.generateForCar
         combined.state = prefManager.combinedAsset
     }
     
@@ -72,6 +81,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         prefManager.generateForIPad       = ipad.state
         prefManager.generateForIPhone     = iphone.state
         prefManager.generateForMac        = mac.state
+        prefManager.generateForCar        = car.state
         prefManager.combinedAsset         = combined.state
     }
     
@@ -115,7 +125,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     }
     
     
-    @IBAction func export(sender: NSButton) {
+    @IBAction func export(sender: NSToolbarItem) {
         // Abort generation when no platforms are selected
         if enabledPlatforms.count == 0 {
             displayAlertWithMessage("No platforms selected!", andInformativeText: "You have to select at least one platform.")

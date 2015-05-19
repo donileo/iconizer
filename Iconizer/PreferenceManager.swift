@@ -13,6 +13,7 @@ private let generateForAppleWatchKey = "generateForAppleWatch"      // Generate 
 private let generateForIPhoneKey     = "generateForIPhone"          // Generate icons for iPhone?
 private let generateForIPadKey       = "generateForIPad"            // Generate icons for iPad?
 private let generateForMacKey        = "generateForMac"             // Generate icons for Mac OS?
+private let generateForCarKey        = "generateForCar"             // Generate icons for CarPlay?
 private let combinedAssetKey         = "combinedAsset"              // Export selected Platforms into one asset catalog
 
 
@@ -77,6 +78,20 @@ class PreferenceManager {
         }
     }
     
+    var generateForCar: Int {
+        get {
+            return userDefaults.integerForKey(generateForCarKey)
+        }
+        
+        set(newValue) {
+            if newValue == NSOffState {
+                userDefaults.setInteger(newValue, forKey: generateForCarKey)
+            } else {
+                userDefaults.setInteger(NSOnState, forKey: generateForCarKey)
+            }
+        }
+    }
+    
     var combinedAsset: Int {
         get {
             return userDefaults.integerForKey(combinedAssetKey)
@@ -102,6 +117,7 @@ class PreferenceManager {
                       generateForIPhoneKey: NSOnState,
                         generateForIPadKey: NSOnState,
                   generateForAppleWatchKey: NSOnState,
+                         generateForCarKey: NSOnState,
                           combinedAssetKey: NSOffState ]
         
         userDefaults.registerDefaults(defaults)
