@@ -11,6 +11,7 @@ import Cocoa
 class FileManager {
     
     var jsonFile: [String : AnyObject]        // Contains data for the Contents.json file
+    let imageGenerator: ImageGenerator!
     
     
     init() {
@@ -19,6 +20,8 @@ class FileManager {
         // Add the default attributes to the json object
         jsonFile["author"]  = "Iconizer"
         jsonFile["version"] = 1
+        
+        imageGenerator = ImageGenerator()
     }
     
     
@@ -49,17 +52,21 @@ class FileManager {
                     // Unwrap icon name and icon file from the icon dictionary
                     for (name, icon) in iconDict {
                         // Create the correct filename
-                        let filename = "\(platform.lowercaseString)-\(name).tiff"
+                        let filename = "\(platform.lowercaseString)-\(name).png"
                         // Append the corresponding icon name to the url
                         let fileURL = iconsetURL.URLByAppendingPathComponent(filename, isDirectory: false)
                         
-                        // Get TIFF representation of the current icon...
-                        if let tiffRep = icon?.TIFFRepresentation {
-                            // ...and write it to the filesystem
-                            if tiffRep.writeToURL(fileURL, atomically: true) {
-                                println("Successfully wrote file to: \(fileURL.path!).")
-                            } else {
-                                println("Writing file \(filename) to \(fileURL.path!) failed!")
+                        // Unwrap NSImage?
+                        if let icn = icon {
+                            // Get PNG representation...
+                            let pngRep = imageGenerator.PNGRepresentationFromImage(icn)
+                            if let png = pngRep {
+                                // ...and write it to the filesystem
+                                if png.writeToURL(fileURL, atomically: true) {
+                                    println("Successfully wrote file to: \(fileURL.path!).")
+                                } else {
+                                    println("Writing file \(filename) to \(fileURL.path!) failed!")
+                                }
                             }
                         }
                         
@@ -89,7 +96,7 @@ class FileManager {
         var jsonImageData: [String : String] = [:]
         
         // Set the filename property
-        jsonImageData["filename"] = "\(platform.lowercaseString)-\(name).tiff"
+        jsonImageData["filename"] = "\(platform.lowercaseString)-\(name).png"
         // Set the idion property
         jsonImageData["idiom"] = platform.lowercaseString
         

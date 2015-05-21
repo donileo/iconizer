@@ -80,4 +80,22 @@ class ImageGenerator {
         // Return the resized image
         return newImage
     }
+    
+    
+    // Creates a PNGRepresentation from an NSImage object
+    func PNGRepresentationFromImage(image: NSImage?) -> NSData? {
+        var bitmap: NSBitmapImageRep?
+        
+        if let img = image {
+            img.lockFocus()
+            bitmap = NSBitmapImageRep(focusedViewRect: NSMakeRect(0, 0, img.size.width, img.size.height))
+            img.unlockFocus()
+        }
+        
+        if let b = bitmap {
+            return b.representationUsingType(NSBitmapImageFileType.NSPNGFileType, properties: [:])
+        }
+        
+        return nil
+    }
 }
