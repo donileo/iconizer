@@ -1,4 +1,4 @@
-# Iconizer # 
+# Iconizer #
 Creates Xcode image catalogs (xcassets) for iPad, iPhone, Apple Watch and OS X.
 
 ![Iconizer](http://behoernchen.github.io/images/Iconizer%20Screenshot.png)
