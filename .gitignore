@@ -12,6 +12,7 @@
 xcuserdata
 
 # Build products
+DerivedData/
 build/
 *.o
 *.LinkFileList
