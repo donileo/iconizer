@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController" customModule="Iconizer" customModuleProvider="target">
@@ -22,21 +23,24 @@
         <window title="Iconizer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="zq5-tq-OcR">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="109" y="131" width="327" height="436"/>
+            <rect key="contentRect" x="109" y="131" width="460" height="571"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
-            <value key="minSize" type="size" width="327" height="436"/>
+            <value key="minSize" type="size" width="460" height="571"/>
             <view key="contentView" id="dHQ-wJ-Gg8">
-                <rect key="frame" x="0.0" y="-3" width="327" height="436"/>
+                <rect key="frame" x="0.0" y="-5" width="460" height="571"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a1k-ol-dvx">
-                        <rect key="frame" x="17" y="126" width="293" height="293"/>
+                        <rect key="frame" x="17" y="126" width="426" height="428"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="a1k-ol-dvx" secondAttribute="height" multiplier="210:211" id="Imu-Ga-wKh"/>
+                        </constraints>
                         <imageCell key="cell" selectable="YES" editable="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="OMw-MU-rRL"/>
                     </imageView>
                     <box autoresizesSubviews="NO" title="Platforms" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="AeP-lJ-3Mp">
-                        <rect key="frame" x="17" y="46" width="293" height="75"/>
+                        <rect key="frame" x="17" y="46" width="426" height="75"/>
                         <view key="contentView">
-                            <rect key="frame" x="1" y="1" width="291" height="59"/>
+                            <rect key="frame" x="1" y="1" width="424" height="59"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zh4-O0-42y">
@@ -90,7 +94,7 @@
                         </buttonCell>
                     </button>
                     <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ZLK-N9-u3e">
-                        <rect key="frame" x="291" y="23" width="16" height="16"/>
+                        <rect key="frame" x="424" y="23" width="16" height="16"/>
                     </progressIndicator>
                 </subviews>
                 <constraints>
@@ -108,18 +112,35 @@
                     <constraint firstItem="aoH-5m-8C9" firstAttribute="leading" secondItem="dHQ-wJ-Gg8" secondAttribute="leading" constant="20" id="zGp-mW-bNa"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="AF211557-D6ED-4AB3-81A4-8F2F18679E5C" displayMode="iconAndLabel" sizeMode="regular" id="qa7-oE-xVa">
+            <toolbar key="toolbar" implicitIdentifier="AF211557-D6ED-4AB3-81A4-8F2F18679E5C" displayMode="iconOnly" sizeMode="regular" id="qa7-oE-xVa">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="0u1-qq-qGT"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="2JB-4T-bEb"/>
+                    <toolbarItem implicitItemIdentifier="CE29CCD4-FF6B-4463-8859-D758D1FAF300" label="Export Type" paletteLabel="Export Type" id="DLO-jA-FyO">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="308" height="25"/>
+                        <size key="maxSize" width="310" height="29"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="zU3-2P-5PS">
+                            <rect key="frame" x="0.0" y="14" width="308" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectOne" id="zAD-J1-4pK">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment label="App Icon" width="100" selected="YES"/>
+                                    <segment label="Image Set" width="100" tag="1"/>
+                                    <segment label="Launch Image" width="100"/>
+                                </segments>
+                            </segmentedCell>
+                        </segmentedControl>
+                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="3C00CA6F-42D5-40BB-B47A-D644C9582CFE" label="Export" paletteLabel="Export" image="NSShareTemplate" id="hZH-TK-hYJ">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="34" height="28"/>
+                        <size key="minSize" width="34" height="27"/>
                         <size key="maxSize" width="34" height="29"/>
                         <button key="view" verticalHuggingPriority="750" id="kUX-Ax-W0E">
-                            <rect key="frame" x="7" y="14" width="34" height="28"/>
+                            <rect key="frame" x="4" y="14" width="34" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="NSShareTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UKi-tF-mGx">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UKi-tF-mGx">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -130,6 +151,7 @@
                     </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
+                    <toolbarItem reference="DLO-jA-FyO"/>
                     <toolbarItem reference="2JB-4T-bEb"/>
                     <toolbarItem reference="hZH-TK-hYJ"/>
                 </defaultToolbarItems>
@@ -137,7 +159,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="fdr-JF-i66"/>
             </connections>
-            <point key="canvasLocation" x="-335.5" y="214"/>
+            <point key="canvasLocation" x="-271" y="281.5"/>
         </window>
     </objects>
     <resources>
