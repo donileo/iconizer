@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AppIconViewController" customModule="Iconizer" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="-5" width="327" height="428"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OTE-Qp-hDB">
+                    <rect key="frame" x="17" y="118" width="293" height="293"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="OTE-Qp-hDB" secondAttribute="height" multiplier="1:1" id="9Pd-WQ-Rho"/>
+                    </constraints>
+                    <imageCell key="cell" selectable="YES" editable="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="ECi-Qw-77B"/>
+                </imageView>
+                <box autoresizesSubviews="NO" title="Platforms" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="dPZ-zh-A7i">
+                    <rect key="frame" x="17" y="38" width="293" height="75"/>
+                    <view key="contentView">
+                        <rect key="frame" x="1" y="1" width="291" height="59"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FCa-xV-Akp">
+                                <rect key="frame" x="16" y="33" width="65" height="18"/>
+                                <buttonCell key="cell" type="check" title="iPhone" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="hVI-2U-p2j">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cdX-VY-ofE">
+                                <rect key="frame" x="16" y="12" width="61" height="18"/>
+                                <buttonCell key="cell" type="check" title="Watch" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4mG-En-xQX">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wpe-gc-Wzy">
+                                <rect key="frame" x="204" y="33" width="71" height="18"/>
+                                <buttonCell key="cell" type="check" title="CarPlay" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="VEa-YS-8ep">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dxn-ix-xnN">
+                                <rect key="frame" x="116" y="33" width="50" height="18"/>
+                                <buttonCell key="cell" type="check" title="iPad" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Wj5-Ak-Izh">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YVc-WK-c1R">
+                                <rect key="frame" x="116" y="12" width="49" height="18"/>
+                                <buttonCell key="cell" type="check" title="Mac" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Jhx-0V-hvt">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                    </view>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="71" id="9Km-S4-sYD"/>
+                    </constraints>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </box>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="39N-Fi-Vky">
+                    <rect key="frame" x="18" y="18" width="196" height="18"/>
+                    <buttonCell key="cell" type="check" title="Export as combined catalog" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="NPG-fY-eUx">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="CnN-0h-6CM">
+                    <rect key="frame" x="291" y="19" width="16" height="16"/>
+                </progressIndicator>
+            </subviews>
+            <constraints>
+                <constraint firstItem="dPZ-zh-A7i" firstAttribute="top" secondItem="OTE-Qp-hDB" secondAttribute="bottom" constant="8" id="175-yV-VCe"/>
+                <constraint firstAttribute="trailing" secondItem="CnN-0h-6CM" secondAttribute="trailing" constant="20" id="1WT-Sm-dfD"/>
+                <constraint firstItem="CnN-0h-6CM" firstAttribute="top" secondItem="dPZ-zh-A7i" secondAttribute="bottom" constant="7" id="8jJ-mO-bvQ"/>
+                <constraint firstItem="OTE-Qp-hDB" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="Chn-Bg-yx8"/>
+                <constraint firstItem="39N-Fi-Vky" firstAttribute="top" secondItem="dPZ-zh-A7i" secondAttribute="bottom" constant="8" id="IJQ-ZJ-zq8"/>
+                <constraint firstItem="dPZ-zh-A7i" firstAttribute="top" secondItem="OTE-Qp-hDB" secondAttribute="bottom" constant="8" id="KJp-ls-YaB"/>
+                <constraint firstAttribute="bottom" secondItem="CnN-0h-6CM" secondAttribute="bottom" constant="19" id="Q5u-va-ZfH"/>
+                <constraint firstAttribute="trailing" secondItem="dPZ-zh-A7i" secondAttribute="trailing" constant="20" id="Sdf-RY-iSZ"/>
+                <constraint firstItem="dPZ-zh-A7i" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="Tdw-cz-FaD"/>
+                <constraint firstAttribute="bottom" secondItem="39N-Fi-Vky" secondAttribute="bottom" constant="20" id="WTa-Dc-0S0"/>
+                <constraint firstItem="OTE-Qp-hDB" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="X0o-uz-6Os"/>
+                <constraint firstItem="39N-Fi-Vky" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="esu-wD-LUy"/>
+                <constraint firstItem="CnN-0h-6CM" firstAttribute="top" secondItem="dPZ-zh-A7i" secondAttribute="bottom" constant="7" id="g3S-oM-uif"/>
+                <constraint firstAttribute="trailing" secondItem="OTE-Qp-hDB" secondAttribute="trailing" constant="20" id="mNm-th-YKR"/>
+            </constraints>
+            <point key="canvasLocation" x="213.5" y="263"/>
+        </customView>
+    </objects>
+</document>
