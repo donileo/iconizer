@@ -66,11 +66,11 @@ class AppIcon {
     
     
     /**
-    * Generates all necessary images for the given platforms.
-    *
-    * :param: image     The image to Iconize.
-    * :param: platforms The Platforms you want app icons for.
-    */
+     * Generates all necessry images for the given platforms.
+     *
+     * :param: platforms Platforms to generate icons for.
+     * :param: image     The image to iconize.
+     */
     func generateImagesForPlatforms(platforms: [String], fromImage image: NSImage?) {
         // Unwrap given image
         if let img = image {
