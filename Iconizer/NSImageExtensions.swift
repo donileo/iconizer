@@ -34,7 +34,12 @@ extension NSImage {
         return newImage
     }
     
-    func PNGRepresentation() -> NSData {
+    /**
+     * Builds a PNGRepresentation of the current image.
+     *
+     * :returns: NSData object of the png representation
+     */
+    func PNGRepresentation() -> NSData? {
         // Create an empty NSBitmapImageRep.
         var bitmap: NSBitmapImageRep
         
@@ -44,6 +49,6 @@ extension NSImage {
         self.unlockFocus()
         
         // Return NSPNGFileType representation of the bitmap object.
-        return bitmap.representationUsingType(NSBitmapImageFileType.NSPNGFileType, properties: [:])!
+        return bitmap.representationUsingType(NSBitmapImageFileType.NSPNGFileType, properties: [:])
     }
 }
