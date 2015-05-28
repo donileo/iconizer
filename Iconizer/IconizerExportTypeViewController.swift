@@ -27,4 +27,14 @@ class IconizerExportTypeViewController: NSViewController {
         return false
     }
     
+    
+    /**
+    * Base class saving. Does literally nothing.
+    *
+    * :returns: Returns always false.
+    */
+    func saveToURL(url: NSURL) -> Bool {
+        return false
+    }
+    
 }
