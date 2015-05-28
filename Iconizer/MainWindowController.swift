@@ -11,26 +11,25 @@ import Cocoa
 /**
  * Nicely wraps up the integers from NSSegmented Control.
  *
- * - kAppIconView:     Selects the AppIconViewController
- * - kImageSetView:    Selects the ImageSetViewController
- * - kLaunchImageView: Selects the LaunchImageViewController
+ * - kAppIconView:     Represents the AppIconViewController
+ * - kImageSetView:    Represents the ImageSetViewController
+ * - kLaunchImageView: Represents the LaunchImageViewController
  */
 enum ViewControllerTag: Int {
-    case kAppIconView     = 0
-    case kImageSetView    = 1
-    case kLaunchImageView = 2
+    case kAppIconView      = 0
+    case kImageSetView     = 1
+    case kLaunchImageView  = 2
 }
 
 
 class MainWindowController: NSWindowController, NSWindowDelegate {
     
-     /// Holds the main NSView of MainWindow.
+     /// Holds the main view of MainWindow.
     @IBOutlet weak var mainView: NSView!
-     /// Holds a pointer the the segmentedControl, which determines which view is currently displayed.
+     /// Holds a pointer for the segmentedControl, which determines which view is currently displayed.
     @IBOutlet weak var exportType: NSSegmentedControl!
-    
-    var currentView: NSViewController?
-    
+     /// Represents the currently activated view.
+    var currentView: IconizerExportTypeViewController?
     
     override var windowNibName: String? {
         return "MainWindow"
@@ -108,13 +107,15 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         exportSheet.canChooseFiles       = false
         exportSheet.prompt               = "Export"
         
-        // Open NSOpenPanel ontop of this window.
-        exportSheet.beginSheetModalForWindow(self.window!) { (result: Int) -> Void in
-            if result == NSFileHandlingPanelOKButton {
-                // Cast currentView to IconizerExportTypeViewController to...
-                if let currentView = self.currentView as? IconizerExportTypeViewController {
-                    // ...call export() on NSView.
-                    currentView.export()
+        // Unwrap currentView...
+        if let currentView = self.currentView {
+            // ...and start export process.
+            if currentView.export() {
+                // Open NSOpenPanel ontop of self.window.
+                exportSheet.beginSheetModalForWindow(self.window!) { (result: Int) -> Void in
+                    if result == NSFileHandlingPanelOKButton {
+                        // Saving data goes in here...
+                    }
                 }
             }
         }
