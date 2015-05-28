@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class AppIconViewController: NSViewController {
+class AppIconViewController: IconizerExportTypeViewController {
     
     @IBOutlet weak var osx: NSButton!
     

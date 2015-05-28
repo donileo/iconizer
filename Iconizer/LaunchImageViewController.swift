@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class LaunchImageViewController: NSViewController {
+class LaunchImageViewController: IconizerExportTypeViewController {
     
     override var nibName: String {
         return "LaunchImageView"

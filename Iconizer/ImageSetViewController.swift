@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ImageSetViewController: NSViewController {
+class ImageSetViewController: IconizerExportTypeViewController {
     
     override var nibName: String {
         return "ImageSetView"
