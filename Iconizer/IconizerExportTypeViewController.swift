@@ -19,8 +19,12 @@ class IconizerExportTypeViewController: NSViewController {
     }
     
     /**
-     * Does nothing.
+     * Base class export. Does literally nothing.
+     *
+     * :returns: Returns always false.
      */
-    func export() {}
+    func export() -> Bool {
+        return false
+    }
     
 }
