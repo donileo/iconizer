@@ -7,7 +7,15 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AppIconViewController" customModule="Iconizer" customModuleProvider="target">
             <connections>
+                <outlet property="carPlay" destination="wpe-gc-Wzy" id="9b9-fb-Ucd"/>
+                <outlet property="combined" destination="39N-Fi-Vky" id="agO-Xq-dOB"/>
+                <outlet property="imageView" destination="OTE-Qp-hDB" id="3ez-cA-K3p"/>
+                <outlet property="ipad" destination="Dxn-ix-xnN" id="YL5-Ho-1yl"/>
+                <outlet property="iphone" destination="FCa-xV-Akp" id="qkE-pS-ozK"/>
+                <outlet property="osx" destination="YVc-WK-c1R" id="yeA-Q9-pD3"/>
+                <outlet property="progress" destination="CnN-0h-6CM" id="Dhl-XE-He1"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+                <outlet property="watch" destination="cdX-VY-ofE" id="B1x-Ii-q7v"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
