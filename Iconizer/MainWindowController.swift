@@ -99,22 +99,26 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
      * :param: sender NSButton, that should start the generation process.
      */
     @IBAction func export(sender: NSButton) {
-        // Create a new NSOpenPanel, to export the generated asset catalogs.
-        let exportSheet = NSOpenPanel()
-        
-        // Configure the NSOpenPanel.
-        exportSheet.canChooseDirectories = true
-        exportSheet.canChooseFiles       = false
-        exportSheet.prompt               = "Export"
-        
         // Unwrap currentView...
         if let currentView = self.currentView {
             // ...and start export process.
             if currentView.export() {
+                // Create a new NSOpenPanel, to export the generated asset catalogs.
+                let exportSheet = NSOpenPanel()
+                
+                // Configure the NSOpenPanel.
+                exportSheet.canChooseDirectories = true
+                exportSheet.canChooseFiles       = false
+                exportSheet.prompt               = "Export"
+                
                 // Open NSOpenPanel ontop of self.window.
                 exportSheet.beginSheetModalForWindow(self.window!) { (result: Int) -> Void in
                     if result == NSFileHandlingPanelOKButton {
-                        // Saving data goes in here...
+                        if let url = exportSheet.URL {
+                            if currentView.saveToURL(url) {
+                                NSWorkspace.sharedWorkspace().openURL(url.URLByAppendingPathComponent("Iconizer Assets/"))
+                            }
+                        }
                     }
                 }
             }
