@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20480CA71B170A4D00C77C12 /* IconizerExportTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20480CA61B170A4D00C77C12 /* IconizerExportTypeViewController.swift */; };
+		20480CA91B173F3200C77C12 /* NSImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20480CA81B173F3200C77C12 /* NSImageExtensions.swift */; };
 		20A4E2FD1B16474200218A51 /* AppIconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A4E2FB1B16474200218A51 /* AppIconViewController.swift */; };
 		20A4E2FE1B16474200218A51 /* AppIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20A4E2FC1B16474200218A51 /* AppIconView.xib */; };
 		20A4E3011B16552700218A51 /* LaunchImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A4E2FF1B16552700218A51 /* LaunchImageViewController.swift */; };
@@ -18,12 +20,13 @@
 		20A9A5F31AFEB8C100D07AA1 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9A5F21AFEB8C100D07AA1 /* MainWindowController.swift */; };
 		20A9A5F51AFEB8EA00D07AA1 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20A9A5F41AFEB8EA00D07AA1 /* MainWindow.xib */; };
 		20A9A5F91AFEB95400D07AA1 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9A5F61AFEB95400D07AA1 /* FileManager.swift */; };
-		20A9A5FA1AFEB95400D07AA1 /* ImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9A5F71AFEB95400D07AA1 /* ImageGenerator.swift */; };
 		20A9A5FB1AFEB95400D07AA1 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9A5F81AFEB95400D07AA1 /* PreferenceManager.swift */; };
 		20A9A5FD1AFEB9E500D07AA1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20A9A5FC1AFEB9E500D07AA1 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20480CA61B170A4D00C77C12 /* IconizerExportTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconizerExportTypeViewController.swift; sourceTree = "<group>"; };
+		20480CA81B173F3200C77C12 /* NSImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSImageExtensions.swift; sourceTree = "<group>"; };
 		20A4E2FB1B16474200218A51 /* AppIconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIconViewController.swift; sourceTree = "<group>"; };
 		20A4E2FC1B16474200218A51 /* AppIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppIconView.xib; sourceTree = "<group>"; };
 		20A4E2FF1B16552700218A51 /* LaunchImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchImageViewController.swift; sourceTree = "<group>"; };
@@ -37,7 +40,6 @@
 		20A9A5F21AFEB8C100D07AA1 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		20A9A5F41AFEB8EA00D07AA1 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		20A9A5F61AFEB95400D07AA1 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
-		20A9A5F71AFEB95400D07AA1 /* ImageGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageGenerator.swift; sourceTree = "<group>"; };
 		20A9A5F81AFEB95400D07AA1 /* PreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 		20A9A5FC1AFEB9E500D07AA1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		20A9A5FE1AFEBAA500D07AA1 /* Iconizer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Iconizer.entitlements; sourceTree = "<group>"; };
@@ -78,9 +80,10 @@
 				20A4E2FB1B16474200218A51 /* AppIconViewController.swift */,
 				20A4E2FF1B16552700218A51 /* LaunchImageViewController.swift */,
 				20A4E3031B16553500218A51 /* ImageSetViewController.swift */,
-				20A9A5F71AFEB95400D07AA1 /* ImageGenerator.swift */,
+				20480CA61B170A4D00C77C12 /* IconizerExportTypeViewController.swift */,
 				20A9A5F61AFEB95400D07AA1 /* FileManager.swift */,
 				20A9A5F81AFEB95400D07AA1 /* PreferenceManager.swift */,
+				20480CA81B173F3200C77C12 /* NSImageExtensions.swift */,
 				20A9A5F11AFEB89000D07AA1 /* UI */,
 				20A9A5D41AFEB83B00D07AA1 /* Supporting Files */,
 			);
@@ -188,10 +191,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				20A9A5FB1AFEB95400D07AA1 /* PreferenceManager.swift in Sources */,
+				20480CA71B170A4D00C77C12 /* IconizerExportTypeViewController.swift in Sources */,
 				20A9A5F91AFEB95400D07AA1 /* FileManager.swift in Sources */,
-				20A9A5FA1AFEB95400D07AA1 /* ImageGenerator.swift in Sources */,
 				20A4E2FD1B16474200218A51 /* AppIconViewController.swift in Sources */,
 				20A9A5F31AFEB8C100D07AA1 /* MainWindowController.swift in Sources */,
+				20480CA91B173F3200C77C12 /* NSImageExtensions.swift in Sources */,
 				20A4E3051B16553500218A51 /* ImageSetViewController.swift in Sources */,
 				20A4E3011B16552700218A51 /* LaunchImageViewController.swift in Sources */,
 				20A9A5D71AFEB83B00D07AA1 /* AppDelegate.swift in Sources */,
