@@ -28,6 +28,14 @@
 
 import Cocoa
 
+
+private let kAppleWatchPlatformName = "Watch"
+private let kIPadPlatformName       = "iPad"
+private let kIPhonePlatformName     = "iPhone"
+private let kOSXPlatformName        = "Mac"
+private let kCarPlayPlatformName    = "Car"
+
+
 class AppIconViewController: IconizerExportTypeViewController {
     
      /// Export asset catalog for OS X?
@@ -51,25 +59,11 @@ class AppIconViewController: IconizerExportTypeViewController {
     var enabledPlatforms: [String] {
         get {
             var tmp: [String] = []
-            if watch.state == NSOnState {
-                tmp.append(watch.title)
-            }
-            
-            if ipad.state == NSOnState {
-                tmp.append(ipad.title)
-            }
-            
-            if iphone.state == NSOnState {
-                tmp.append(iphone.title)
-            }
-            
-            if osx.state == NSOnState {
-                tmp.append(osx.title)
-            }
-            
-            if carPlay.state == NSOnState {
-                tmp.append("Car")
-            }
+            if watch.state   == NSOnState { tmp.append(kAppleWatchPlatformName) }
+            if ipad.state    == NSOnState { tmp.append(kIPadPlatformName) }
+            if iphone.state  == NSOnState { tmp.append(kIPhonePlatformName) }
+            if osx.state     == NSOnState { tmp.append(kOSXPlatformName) }
+            if carPlay.state == NSOnState { tmp.append(kCarPlayPlatformName) }
             
             return tmp
         }
@@ -84,6 +78,7 @@ class AppIconViewController: IconizerExportTypeViewController {
     }
     
     
+    
     // MARK: - Methods
 
     override func viewDidLoad() {
@@ -96,44 +91,29 @@ class AppIconViewController: IconizerExportTypeViewController {
      * :returns: true if generation was succesful, false otherwise
      */
     override func export() -> Bool {
-        if self.imageView.image == nil {
-            let alert = NSAlert()
-            
-            alert.messageText = "No Image provided!"
-            alert.informativeText = "You haven't provided any images to convert."
-            
-            alert.beginSheetModalForWindow(self.view.window!, completionHandler: nil)
-        }
-        
-        // Display the progress indicator and start animating
-        self.toggleProgressIndicator()
-        
-        // Is at least one platform selected?
-        if self.enabledPlatforms.count > 0 {
-            // Generate necessary images
-            self.appIcon.generateImagesForPlatforms(self.enabledPlatforms, fromImage: self.imageView.image)
+        // Do we have an image?
+        if let img = self.imageView.image {
+            // Is at least one platform selected?
+            if self.enabledPlatforms.count > 0 {
+                // Start progress indicator.
+                self.toggleProgressIndicator()
+                
+                // Generate images.
+                self.appIcon.generateImagesForPlatforms(self.enabledPlatforms, fromImage: self.imageView.image)
+                
+                // Stop progress indicator.
+                self.toggleProgressIndicator()
+                
+                // We're alright here!
+                return true
+            } else {
+                self.beginSheetModalWithMessage("No platform selected!", andText: "You have to select at least one platform.")
+                return false
+            }
         } else {
-            // Create a new NSAlert
-            let alert = NSAlert()
-            
-            // Set message and text...
-            alert.messageText     = "No platform selected!"
-            alert.informativeText = "You have to select at least one platform."
-            
-            // ...and display it as sheet on the window of this view.
-            alert.beginSheetModalForWindow(self.view.window!, completionHandler: nil)
-            
-            // Hide the progress indicator and stop the animation
-            self.toggleProgressIndicator()
-            
+            self.beginSheetModalWithMessage("No Image provided!", andText: "You haven't provided any images to convert.")
             return false
         }
-        
-        // Hide the progress indicator and stop the animation
-        self.toggleProgressIndicator()
-        
-        // Everything fine down here...
-        return true
     }
     
     /**
@@ -144,13 +124,13 @@ class AppIconViewController: IconizerExportTypeViewController {
      * :returns: Return true on success, false otherwise
      */
     override func saveToURL(url: NSURL) -> Bool {
+        // Save the asset catalog(s) either combined or seperated.
         if self.combined.state == NSOnState {
-            println("Save as combined")
             self.appIcon.saveImageAssetToDirectoryURL(url, asCombinedAsset: true)
         } else {
-            println("Save as seperated")
             self.appIcon.saveImageAssetToDirectoryURL(url)
         }
+        
         return true
     }
     
@@ -158,20 +138,33 @@ class AppIconViewController: IconizerExportTypeViewController {
      * Toggles the visibility and the animation status of the NSProgressIndicator
      */
     func toggleProgressIndicator() {
-        println("toggleProgressIndicator()")
         // Is the progressIndicator visible?
         if self.progress.hidden == false {
-            println("progressIndicator.hidden = true")
-            // Hide it...
+            // Yes: Hide it and stop the animation.
             self.progress.hidden = true
-            // ...and stop the animation.
             self.progress.stopAnimation(self)
         } else {
-            println("progressIndicator.hidden = false")
-            // Otherwise start the animation and...
+            // Nope: Otherwise start the animation and display it on screen.
             self.progress.startAnimation(self)
-            // ...display it on screen.
             self.progress.hidden = false
         }
+    }
+    
+    /**
+     * Opens a sheet modal with the given message and text.
+     *
+     * :param: message messageText for the alert.
+     * :param: text    informativeText for the alert
+     */
+    func beginSheetModalWithMessage(message: String, andText text: String) {
+        // Create a new NSAlert object.
+        let alert = NSAlert()
+        
+        // Configure message and text.
+        alert.messageText     = message
+        alert.informativeText = text
+        
+        // Display sheet modal.
+        alert.beginSheetModalForWindow(self.view.window!, completionHandler: nil)
     }
 }

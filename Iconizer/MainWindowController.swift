@@ -123,7 +123,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         if let currentView = self.currentView {
             // ...and start export process.
             if currentView.export() {
-                // Create a new NSOpenPanel, to export the generated asset catalogs.
+                // Misuse an NSOpenPanel as export panel
                 let exportSheet = NSOpenPanel()
                 
                 // Configure the NSOpenPanel.
