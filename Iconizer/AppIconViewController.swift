@@ -83,6 +83,32 @@ class AppIconViewController: IconizerExportTypeViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Create a new instance of the PreferenceManager
+        let prefManager = PreferenceManager()
+        
+        // Get the user defaults.
+        self.combined.state = prefManager.combinedAsset
+        self.watch.state    = prefManager.generateForAppleWatch
+        self.carPlay.state  = prefManager.generateForCar
+        self.ipad.state     = prefManager.generateForIPad
+        self.iphone.state   = prefManager.generateForIPhone
+        self.osx.state      = prefManager.generateForMac
+    }
+    
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        
+        // Create a new instance of PreferenceManager
+        let prefManager = PreferenceManager()
+        
+        // Write back the user defaults.
+        prefManager.combinedAsset         = self.combined.state
+        prefManager.generateForAppleWatch = self.watch.state
+        prefManager.generateForCar        = self.carPlay.state
+        prefManager.generateForIPad       = self.ipad.state
+        prefManager.generateForIPhone     = self.iphone.state
+        prefManager.generateForMac        = self.osx.state
     }
     
     /**
