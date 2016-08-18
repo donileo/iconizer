@@ -5,14 +5,14 @@
           "size" : "60x60",
           "scale" : "2x",
           "expected-size" : "120",
-          "filename" : "car@2x.png"
+          "filename" : "car60@2x.png"
       },
       {
           "idiom" : "car",
           "size" : "60x60",
           "scale" : "3x",
           "expected-size" : "180",
-          "filename" : "car@3x.png"
+          "filename" : "car60@3x.png"
       }
   ]
 }
